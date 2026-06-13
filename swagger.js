@@ -2,7 +2,8 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const { config } = require('./config');
 
 const port = config.env.server.port || 4001;
-const host = config.env.server.host || '127.0.0.1';
+const serverUrl = process.env.RENDER_EXTERNAL_URL
+  || `http://${config.env.server.host || '127.0.0.1'}:${port}`;
 
 const options = {
   definition: {
@@ -14,8 +15,8 @@ const options = {
     },
     servers: [
       {
-        url: `http://${host}:${port}`,
-        description: 'Local server',
+        url: serverUrl,
+        description: process.env.RENDER_EXTERNAL_URL ? 'Render server' : 'Local server',
       },
     ],
     components: {
