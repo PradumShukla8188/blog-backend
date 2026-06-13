@@ -43,5 +43,4 @@ Thumbs.db
 
 # Local / sensitive config (copy from *.example.js)
 config.js
-connection.js
 reset.http
